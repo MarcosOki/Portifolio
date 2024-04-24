@@ -6,6 +6,8 @@ import { Container } from "./Components/Container";
 import { Header } from "./Components/Header";
 import { Section } from "./Components/Section";
 import { Contacts } from "./Components/Contacts";
+import { Card } from "./Components/Card";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 function App() {
   const nextPage = () => {
@@ -37,6 +39,7 @@ function App() {
   const [totalPosts, setTotalPosts] = useState(0);
   const [dark, setDark] = useState(true);
 
+
   useEffect(() => {
     getPost();
   }, [page]);
@@ -51,11 +54,14 @@ function App() {
   }
 
   return (
-    <Body className={`flex justify-center ${dark ? "dark:" : ""}`}>
+    <Body
+      className={`flex justify-center flex-col items-center ${
+        dark ? "dark:" : ""
+      }`}
+    >
       <Container className="flex flex-col">
-        <Header />
-
-        <Section className="flex flex-col gap-8">
+        <Header/>
+        <Section className="flex flex-col gap-8 h-[90vh] justify-center">
           <div className="w-7/12">
             <h1 className="text-dark-text-primary font-bold text-5xl">
               Engenheiro de Software, estudante apaixonado por tecnologia!
@@ -72,6 +78,31 @@ function App() {
             </p>
           </div>
           <Contacts />
+        </Section>
+      </Container>
+      <Container>
+        <Section className="w-6/12 flex flex-col gap-5 py-0 pb-10">
+            <span className="text-4xl text-dark-text-primary font-medium">Bem-Vindo ao meu Blog.</span>
+            <p className="text-dark-text-secondary leading-8 border-l-2 border-dark-border px-4">
+              Este blog tem o objetivo de ajudar pessoas que iniciaram na área,
+              e também é útil para pessoas que já tem experiência nesse ramo.
+            </p>
+        </Section>
+        <Section className="py-0 w-8/12 gap-4 flex flex-col">
+          {
+            posts.map((post)=>{
+              return <Card text={post.text} title={post.title} createdAt={post.createdAt}/>
+            })
+          }
+          <div className="flex justify-between items-center p-5">
+            <span className="text-dark-text-secondary">Total de Post: {totalPosts}</span>
+            <span className="text-dark-text-secondary">Página {page}  de {totalPage}</span>
+
+            <div className="flex gap-1">
+              <button className="bg-neutral-900 rounded-lg" onClick={returnPage}><ArrowLeft size={"30px"}/></button>
+              <button className="bg-neutral-900 rounded-lg" onClick={nextPage}><ArrowRight size={"30px"}/></button>
+            </div>
+          </div>
         </Section>
       </Container>
     </Body>

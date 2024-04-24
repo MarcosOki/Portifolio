@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge'
 import { NavBar } from './NavBar'
 import { FaRegMoon, FaUser } from 'react-icons/fa'
 interface HeaderProps extends ComponentProps<'header'> {
-  className?:string
+  className?:string,
 }
 
 export function Header({className,...props}: HeaderProps) {
