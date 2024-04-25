@@ -11,9 +11,9 @@ export function Contacts({className,...props}:ContactsProps) {
   return (
     
     <ul className={twMerge("flex gap-8",className)} {...props}>
-      <li><a href='#'><FaInstagram className={linkStyle}/></a></li>
-      <li><a href='#'><FaLinkedin className={linkStyle}/></a></li>
-      <li><a href='#'><FaGithub className={linkStyle}/></a></li>
+      <li><a href='https://instagram.com/marcos_okitaa' target='_blank'><FaInstagram className={linkStyle}/></a></li>
+      <li><a href='www.linkedin.com/in/marcos-okita-407021242' target='_blank'><FaLinkedin className={linkStyle}/></a></li>
+      <li><a href="https://github.com/MarcosOki" target="_blank"><FaGithub className={linkStyle}/></a></li>
     </ul>
   )
 }

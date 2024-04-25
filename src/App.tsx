@@ -38,11 +38,31 @@ function App() {
   const [totalPage, setTotalPage] = useState(0);
   const [totalPosts, setTotalPosts] = useState(0);
   const [dark, setDark] = useState(true);
+  const [title, setTitle] = useState<string >()
+  const [text, setText] = useState<string >()
+  const [authorPost, setAuthorPost] = useState<string >()
+  const [att, setAtt] = useState<boolean>(true)
 
+  const enviarPost = async (title:string | undefined, text:string | undefined, author:string | undefined)=>{
+    console.debug('antes do if','chegou')
+    console.debug('title',title)
+    if(title && text && author){
+      console.debug("depois","chegou")
+      const response = await axios.post("http://localhost:3333/createpost",{
+        title,
+        text,
+        author
+      }).then((response)=>{console.log(response.data)}).catch((error)=>{console.error(error)})
+      }
+      console.debug("chegou aq","sim")
+      setAtt(att ? false : true)
+    }
 
   useEffect(() => {
     getPost();
-  }, [page]);
+  }, [page,att]);
+
+
   async function getPost() {
     const response = (await axios.get(`http://localhost:3333/page/${page}`))
       .data;
@@ -87,6 +107,13 @@ function App() {
               Este blog tem o objetivo de ajudar pessoas que iniciaram na área,
               e também é útil para pessoas que já tem experiência nesse ramo.
             </p>
+            <div className="flex flex-col gap-3 py-5">
+              <input className="rounded-lg p-2 bg-dark-text-secondary placeholder:text-black " placeholder="Titulo" type="text" onChange={e=>setTitle(e.target.value)}/>
+              <input className="rounded-lg p-2 bg-dark-text-secondary placeholder:text-black " placeholder="Conteudo" type="text" onChange={e=>setText(e.target.value)} />
+              <input className="rounded-lg p-2 bg-dark-text-secondary placeholder:text-black " placeholder="Autor" type="text" onChange={e=>setAuthorPost(e.target.value)} />
+              <button className="w-[20%] p-2 bg-green-500 rounded-lg hover:bg-green-400 font-semibold" onClick={()=>{enviarPost(title,text,authorPost)}}>Enviar</button>
+            </div>
+
         </Section>
         <Section className="py-0 w-8/12 gap-4 flex flex-col">
           {

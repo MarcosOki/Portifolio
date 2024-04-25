@@ -13,7 +13,7 @@ export function NavBar({className,...props}: NavBarProps) {
           <a href="#" className={listStyle}>About</a>
         </li>
         <li>
-          <a href="#" className={listStyle}>Blog</a>
+          <a className={listStyle}>Blog</a>
         </li>
         <li>
           <a href="#" className={listStyle}>Projects</a>
