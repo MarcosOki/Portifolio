@@ -44,17 +44,13 @@ function App() {
   const [att, setAtt] = useState<boolean>(true)
 
   const enviarPost = async (title:string | undefined, text:string | undefined, author:string | undefined)=>{
-    console.debug('antes do if','chegou')
-    console.debug('title',title)
     if(title && text && author){
-      console.debug("depois","chegou")
       const response = await axios.post("http://localhost:3333/createpost",{
         title,
         text,
         author
       }).then((response)=>{console.log(response.data)}).catch((error)=>{console.error(error)})
       }
-      console.debug("chegou aq","sim")
       setAtt(att ? false : true)
     }
 
