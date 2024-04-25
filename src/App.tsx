@@ -73,6 +73,11 @@ function App() {
     console.table(posts);
   }
 
+
+  const toggleTheme = ()=>{
+    setDark(dark ? false : true)
+  }
+
   return (
     <Body
       className={`flex justify-center flex-col items-center ${
@@ -80,7 +85,7 @@ function App() {
       }`}
     >
       <Container className="flex flex-col">
-        <Header/>
+        <Header toggleTheme={toggleTheme} theme={dark}/>
         <Section className="flex flex-col gap-8 h-[90vh] justify-center">
           <div className="w-7/12">
             <h1 className="text-dark-text-primary font-bold text-5xl">
