@@ -8,3 +8,7 @@
   box-sizing: border-box;
   font-family: Poppins;
 }
+html,body{
+  width: 100%;
+  overflow-x: hidden;
+}

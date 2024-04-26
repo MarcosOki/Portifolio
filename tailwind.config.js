@@ -15,6 +15,15 @@ export default {
           "text-secondary":"#9A9A9A",
           "hover":"#00FFD9",
           "border":"#202020"
+        },
+        light:{
+          "bg":"#FFF",
+          "primary":"#FFF",
+          "secondary":"#424242",
+          "text-primary":"#E7E7E7",
+          "text-secondary":"#9A9A9A",
+          "hover":"#00FFD9",
+          "border":"#202020"
         }
       }
     },

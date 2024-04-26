@@ -93,13 +93,13 @@ const url = "https://apiblog-lthw.onrender.com"
     >
       <Container className="flex flex-col">
         <Header toggleTheme={toggleTheme} theme={dark} />
-        <Section className="flex flex-col gap-8 h-[90vh] justify-center">
-          <div className="w-7/12">
-            <h1 className="text-dark-text-primary font-bold text-5xl">
+        <Section className="flex flex-col gap-5 justify-center sm:gap-8 h-[90vh] sm:justify-center">
+          <div className="sm:w-7/12 ">
+            <h1 className="text-dark-text-primary sm:font-bold sm:text-5xl text-3xl">
               Engenheiro de Software, estudante apaixonado por tecnologia!
             </h1>
           </div>
-          <div className="w-8/12">
+          <div className="sm:w-8/12">
             <p className="text-dark-text-secondary leading-8">
               Ei, eu sou o Marcos, tenho 18 anos e estou imerso no universo do
               ReactJS. Além de estudar essa tecnologia, eu também estudo na
@@ -113,8 +113,8 @@ const url = "https://apiblog-lthw.onrender.com"
         </Section>
       </Container>
       <Container>
-        <Section className="w-6/12 flex flex-col gap-5 py-0 pb-10">
-          <span className="text-4xl text-dark-text-primary font-medium">
+        <Section className="sm:w-6/12 flex flex-col gap-5 sm:py-0 sm:pb-10">
+          <span className="sm:text-4xl text-3xl  text-dark-text-primary sm:font-medium">
             Bem-Vindo ao meu Blog.
           </span>
           <p className="text-dark-text-secondary leading-8 border-l-2 border-dark-border px-4">
@@ -123,25 +123,25 @@ const url = "https://apiblog-lthw.onrender.com"
           </p>
           <div className="flex flex-col gap-3 py-5">
             <input
-              className="rounded-lg p-2 bg-dark-text-secondary placeholder:text-black "
+              className="rounded-sm p-2 bg-dark-text-secondary placeholder:text-black "
               placeholder="Titulo"
               type="text"
               onChange={(e) => setTitle(e.target.value)}
             />
             <input
-              className="rounded-lg p-2 bg-dark-text-secondary placeholder:text-black "
+              className="rounded-sm p-2 bg-dark-text-secondary placeholder:text-black "
               placeholder="Conteudo"
               type="text"
               onChange={(e) => setText(e.target.value)}
             />
             <input
-              className="rounded-lg p-2 bg-dark-text-secondary placeholder:text-black "
+              className="rounded-sm p-2 bg-dark-text-secondary placeholder:text-black "
               placeholder="Autor"
               type="text"
               onChange={(e) => setAuthorPost(e.target.value)}
             />
             <button
-              className="w-[20%] p-2 bg-green-500 rounded-lg hover:bg-green-400 font-semibold"
+              className="w-[20%] p-2 bg-green-500 rounded-sm hover:bg-green-400 font-semibold"
               onClick={() => {
                 enviarPost(title, text, authorPost);
               }}
@@ -150,7 +150,7 @@ const url = "https://apiblog-lthw.onrender.com"
             </button>
           </div>
         </Section>
-        <Section className="py-0 w-8/12 gap-4 flex flex-col">
+        <Section className="sm:py-0 sm:w-8/12 gap-4 flex flex-col">
           {posts.map((post) => {
             return (
               <Card
@@ -160,9 +160,9 @@ const url = "https://apiblog-lthw.onrender.com"
               />
             );
           })}
-          <div className="flex justify-between items-center p-5">
+          <div className="flex justify-between items-center sm:p-5">
             <span className="text-dark-text-secondary">
-              Total de Post: {totalPosts}
+              Posts: {totalPosts}
             </span>
             <span className="text-dark-text-secondary">
               Página {page} de {totalPage}
@@ -170,12 +170,12 @@ const url = "https://apiblog-lthw.onrender.com"
 
             <div className="flex gap-1">
               <button
-                className="bg-neutral-900 rounded-lg"
+                className="bg-neutral-900 rounded-sm"
                 onClick={returnPage}
               >
                 <ArrowLeft size={"30px"} />
               </button>
-              <button className="bg-neutral-900 rounded-lg" onClick={nextPage}>
+              <button className="bg-neutral-900 rounded-sm" onClick={nextPage}>
                 <ArrowRight size={"30px"} />
               </button>
             </div>

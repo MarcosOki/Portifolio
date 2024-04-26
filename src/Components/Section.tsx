@@ -6,6 +6,6 @@ interface SectionProps extends ComponentProps<'section'> {
 
 export function Section({className,...props}: SectionProps) {
   return (
-    <section className={twMerge(`w-full py-16`,className)}>{props.children}</section>
+    <section className={twMerge(`w-full sm:py-16 py-5 pl-0`,className)}>{props.children}</section>
   )
 }
