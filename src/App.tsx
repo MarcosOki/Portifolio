@@ -25,6 +25,8 @@ function App() {
     }
   };
 
+const url = "https://apiblog-lthw.onrender.com"
+
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState<
     {
@@ -50,7 +52,7 @@ function App() {
   ) => {
     if (title && text && author) {
       const response = await axios
-        .post("http://localhost:3333/createpost", {
+        .post(`${url}/createpost`, {
           title,
           text,
           author,
@@ -70,9 +72,9 @@ function App() {
   }, [page, att]);
 
   async function getPost() {
-    const response = (await axios.get(`http://localhost:3333/page/${page}`))
+    const response = (await axios.get(`${url}/page/${page}`))
       .data;
-    const newPosts = response.posts;
+    const newPosts = response.posts.reverse();
     setPosts(newPosts);
     setTotalPage(response.totalPages);
     setTotalPosts(response.totalPosts);
