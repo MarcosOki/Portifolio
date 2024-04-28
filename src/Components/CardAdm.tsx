@@ -2,7 +2,7 @@ import axios from "axios"
 import { ComponentProps } from "react"
 import { FaRegTrashCan } from "react-icons/fa6"
 import { twMerge } from "tailwind-merge"
-
+import { toast } from "react-toastify"
 interface CardAdmProps extends ComponentProps<'div'> {
    className?:string,
    title:string,
@@ -17,7 +17,7 @@ export function CardAdm({className,title,text,createdAt,idPost,att,setAtt, ...pr
   const url = "https://apiblog-lthw.onrender.com"
 
   const deletePost = async (idPost:number)=>{
-    await axios.delete(`${url}/deletepost`,{data:{id:idPost}})
+    await axios.delete(`${url}/deletepost`,{data:{id:idPost}}).then(()=>{toast.success("Post deletado com sucesso")}).catch(()=>{toast.error("Erro ao deletar post")})
     setAtt(att ? false : true)
   }
 

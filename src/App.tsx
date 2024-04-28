@@ -53,7 +53,7 @@ const url = "https://apiblog-lthw.onrender.com"
     author: string | undefined
   ) => {
     if (title && text && author) {
-      const response = await axios
+      await axios
         .post(`${url}/createpost`, {
           title,
           text,
@@ -64,7 +64,7 @@ const url = "https://apiblog-lthw.onrender.com"
           console.log(resp.data);
           toast.success("Post criado com sucesso")
         })
-        .catch((error) => {
+        .catch(() => {
           toast.error("Erro ao criar Post")
         });
     }
@@ -94,7 +94,7 @@ const url = "https://apiblog-lthw.onrender.com"
     className={`flex justify-center flex-col items-center ${dark ? "dark" : ""}`}
     >
       <ToastContainer />
-      <Container className="flex flex-col bg-dark-bg">
+      <Container className="flex flex-col">
         <Header toggleTheme={toggleTheme} theme={dark} />
         <Section className="flex flex-col gap-5 justify-center sm:gap-8 h-[90vh] sm:justify-center">
           <div className="sm:w-7/12 ">
