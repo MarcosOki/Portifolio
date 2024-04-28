@@ -6,8 +6,8 @@ import { Container } from "./Components/Container";
 import { Header } from "./Components/Header";
 import { Section } from "./Components/Section";
 import { Contacts } from "./Components/Contacts";
-import { Card } from "./Components/Card";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { CardAdm } from "./Components/CardAdm";
 
 function App() {
   const nextPage = () => {
@@ -57,8 +57,9 @@ const url = "https://apiblog-lthw.onrender.com"
           text,
           author,
         })
-        .then((response) => {
-          console.log(response.data);
+        .then((resp) => {
+          console.log(response)
+          console.log(resp.data);
         })
         .catch((error) => {
           console.error(error);
@@ -89,7 +90,7 @@ const url = "https://apiblog-lthw.onrender.com"
     <Body
     className={`flex justify-center flex-col items-center ${dark ? "dark" : ""}`}
     >
-      <Container className="flex flex-col dark:bg-dark-bg bg-light-bg">
+      <Container className="flex flex-col bg-dark-bg">
         <Header toggleTheme={toggleTheme} theme={dark} />
         <Section className="flex flex-col gap-5 justify-center sm:gap-8 h-[90vh] sm:justify-center">
           <div className="sm:w-7/12 ">
@@ -151,10 +152,13 @@ const url = "https://apiblog-lthw.onrender.com"
         <Section className="sm:py-0 sm:w-8/12 gap-4 flex flex-col">
           {posts.map((post) => {
             return (
-              <Card
+              <CardAdm
                 text={post.text}
                 title={post.title}
                 createdAt={post.createdAt}
+                idPost={Number(post.id)}
+                setAtt={setAtt}
+                att={att}
               />
             );
           })}
