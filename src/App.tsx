@@ -87,11 +87,9 @@ const url = "https://apiblog-lthw.onrender.com"
 
   return (
     <Body
-      className={`flex justify-center flex-col items-center ${
-        dark ? "dark:" : ""
-      }`}
+    className={`flex justify-center flex-col items-center ${dark ? "dark" : ""}`}
     >
-      <Container className="flex flex-col">
+      <Container className="flex flex-col dark:bg-dark-bg bg-light-bg">
         <Header toggleTheme={toggleTheme} theme={dark} />
         <Section className="flex flex-col gap-5 justify-center sm:gap-8 h-[90vh] sm:justify-center">
           <div className="sm:w-7/12 ">

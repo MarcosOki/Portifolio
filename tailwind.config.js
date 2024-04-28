@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  dark:"class",
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -20,8 +21,8 @@ export default {
           "bg":"#FFF",
           "primary":"#FFF",
           "secondary":"#424242",
-          "text-primary":"#E7E7E7",
-          "text-secondary":"#9A9A9A",
+          "text-primary":"#000",
+          "text-secondary":"gray-500",
           "hover":"#00FFD9",
           "border":"#202020"
         }
