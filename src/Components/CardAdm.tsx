@@ -29,7 +29,7 @@ export function CardAdm({className,title,text,createdAt,idPost,att,setAtt, ...pr
       </div>
       <p className="text-xl text-dark-text-primary font-semibold" style={{overflowWrap:"break-word"}} >{title}</p>
       <span className="text-dark-text-secondary">id: {idPost}</span>
-      <span className="text-sm text-dark-text-secondary">{text}</span>
+      <span className="text-sm text-dark-text-secondary line-clamp-1 w-[60%]">{text}</span>
       <a href="#" className="text-green-500 font-bold">Read article</a>
     </div>
   )
