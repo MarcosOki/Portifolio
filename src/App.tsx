@@ -8,13 +8,14 @@ import { Section } from "./Components/Section";
 import { Contacts } from "./Components/Contacts";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CardAdm } from "./Components/CardAdm";
-
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const nextPage = () => {
     if (page <= totalPage - 1) {
       setPage(page + 1);
     } else {
-      return;
+      return
     }
   };
   const returnPage = () => {
@@ -45,6 +46,7 @@ const url = "https://apiblog-lthw.onrender.com"
   const [authorPost, setAuthorPost] = useState<string>();
   const [att, setAtt] = useState<boolean>(true);
 
+
   const enviarPost = async (
     title: string | undefined,
     text: string | undefined,
@@ -58,11 +60,12 @@ const url = "https://apiblog-lthw.onrender.com"
           author,
         })
         .then((resp) => {
-          console.log(response)
+          console.log(resp)
           console.log(resp.data);
+          toast.success("Post criado com sucesso")
         })
         .catch((error) => {
-          console.error(error);
+          toast.error("Erro ao criar Post")
         });
     }
     setAtt(att ? false : true);
@@ -90,6 +93,7 @@ const url = "https://apiblog-lthw.onrender.com"
     <Body
     className={`flex justify-center flex-col items-center ${dark ? "dark" : ""}`}
     >
+      <ToastContainer />
       <Container className="flex flex-col bg-dark-bg">
         <Header toggleTheme={toggleTheme} theme={dark} />
         <Section className="flex flex-col gap-5 justify-center sm:gap-8 h-[90vh] sm:justify-center">
