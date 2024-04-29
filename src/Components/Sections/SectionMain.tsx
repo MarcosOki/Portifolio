@@ -9,21 +9,17 @@ interface SectionMainProps{
 }
 export function SectionMain({toggleThemeFunction,theme}:SectionMainProps){
 
-
-  
-
-
   return(
 
     <Container className="flex flex-col">
         <Header toggleTheme={toggleThemeFunction} theme={theme} />
-        <Section className="flex flex-col gap-5 justify-center sm:gap-8 h-[90vh] sm:justify-center">
-          <div className="sm:w-7/12 ">
-            <h1 className="text-dark-text-primary sm:font-bold sm:text-5xl text-3xl">
+        <Section className="flex flex-col justify-center gap-8 h-[90vh]">
+          <div className="w-7/12 ">
+            <h1 className="text-dark-text-primary font-bold text-5xl">
               Engenheiro de Software, estudante apaixonado por tecnologia!
             </h1>
           </div>
-          <div className="sm:w-8/12">
+          <div className="w-8/12">
             <p className="text-dark-text-secondary leading-8">
               Ei, eu sou o Marcos, tenho 18 anos e estou imerso no universo do
               ReactJS. Além de estudar essa tecnologia, eu também estudo na

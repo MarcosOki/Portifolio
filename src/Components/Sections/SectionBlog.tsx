@@ -86,7 +86,7 @@ export function SectionBlog({}:SectionBlogProps){
   return (
 
     <Container>
-        <Section className="sm:w-6/12 flex flex-col gap-5 sm:py-0 sm:pb-10">
+        <Section className="w-6/12 flex flex-col gap-5 py-0">
           <span className="sm:text-4xl text-3xl  text-dark-text-primary sm:font-medium">
             Bem-Vindo ao meu Blog.
           </span>
@@ -123,7 +123,7 @@ export function SectionBlog({}:SectionBlogProps){
             </button>
           </div>
         </Section>
-        <Section className="sm:py-0 sm:w-8/12 gap-4 flex flex-col">
+        <Section className="py-0 w-8/12 gap-4 flex flex-col">
           {posts.map((post) => {
             return (
               <CardAdm
@@ -136,7 +136,7 @@ export function SectionBlog({}:SectionBlogProps){
               />
             );
           })}
-          <div className="flex justify-between items-center sm:p-5">
+          <div className="flex justify-between items-center p-5">
             <span className="text-dark-text-secondary">
               Posts: {totalPosts}
             </span>
