@@ -34,8 +34,8 @@ export function Modal({ btnName,btnNameClass,modelClassStyle,...props }: ModalPr
         portalClassName="modal"
         className="modal-content"
       >
-        <div className="flex justify-center items-center h-full ">
-          <div className={twMerge("bg-white p-8 rounded shadow-lg",modelClassStyle)}>{props.children}</div>
+        <div className="flex justify-center items-center h-full">
+          <div className={twMerge(" p-8 rounded-xl shadow-lg",modelClassStyle)}>{props.children}</div>
         </div>
       </ReactModal>
     </div>

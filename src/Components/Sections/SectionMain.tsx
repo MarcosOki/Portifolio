@@ -29,7 +29,7 @@ export function SectionMain({toggleThemeFunction,theme}:SectionMainProps){
               profissionalmente.
             </p>
           </div>
-          <Contacts />
+          <Contacts size="size-7" />
         </Section>
       </Container>
   )

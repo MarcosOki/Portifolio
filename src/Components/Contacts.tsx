@@ -3,11 +3,12 @@ import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { twMerge } from 'tailwind-merge'
 
 interface ContactsProps extends ComponentProps<'ul'> {
-  className?: string
+  className?: string,
+  size?:string
 }
 
-export function Contacts({className,...props}:ContactsProps) {
-  const linkStyle = 'size-7 text-dark-text-secondary hover:text-dark-hover'
+export function Contacts({className,size,...props}:ContactsProps) {
+  const linkStyle = `${size} text-dark-text-secondary hover:text-dark-hover`
   return (
     
     <ul className={twMerge("flex gap-8",className)} {...props}>
