@@ -19,9 +19,16 @@ export function Header({
   toggleTheme,
   ...props
 }: HeaderProps) {
-  const [user, setUSer] = useState();
-  const [password, setPassword] = useState();
+
+  const [user, setUSer] = useState<string| undefined>();
+  const [password, setPassword] = useState<string | undefined>();
   const [isOpenLogin, setIsOpenLogin] = useState(false);
+
+
+  const [userRegister, setUserRegister] = useState<string| undefined>()
+  const [emailRegister, setEmailRegister] = useState<string| undefined>()
+  const [passwordRegister, setPasswordRegister] = useState<string| undefined>()
+  const [confirmPassowrd, setConfirmPasswordRegister] = useState<string| undefined>()
 
   const openModalLogin = () => {
     setIsOpenLogin(true);
@@ -44,7 +51,7 @@ export function Header({
 
   return (
     <header className={twMerge(`${pc}`, className)} {...props}>
-      <button onClick={openModalLogin} className="text-dark-text-primary border border-2 border-dark-border rounded-3xl p-2">Login</button>
+      <button onClick={openModalLogin} className="text-dark-text-primary border-2 border-dark-border rounded-3xl p-2">Login</button>
       <ReactModal
         isOpen={isOpenLogin}
         onRequestClose={closeModalLogin}
@@ -56,14 +63,16 @@ export function Header({
           <div className="flex flex-col gap-6 py-4 items-center">
             <span className="text-3xl">LOGIN</span>
             <input
-              type="email"
+              type="text"
               className="p-2 bg-dark-primary border border-dark-border w-[20vw] rounded-lg "
               placeholder="Usuário"
+              onChange={(e)=>{setUSer(e.target.value)}}
             />
             <input
               type="password"
               className="p-2 bg-dark-primary border border-dark-border w-[20vw] rounded-lg "
               placeholder="Senha"
+              onChange={(e)=>{setPassword(e.target.value)}}
             />
             <span className="text-dark-text-secondary cursor-pointer font-light">
               Esqueceu a senha?
