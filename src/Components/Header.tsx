@@ -4,6 +4,7 @@ import { NavBar } from "./NavBar";
 import { FaRegMoon, FaRegSun } from "react-icons/fa";
 import ReactModal from "react-modal";
 import { Contacts } from "./Contacts";
+import { UserController } from "../services/UserController";
 
 interface HeaderProps extends ComponentProps<"header"> {
   className?: string;
@@ -30,6 +31,14 @@ export function Header({
   const [passwordRegister, setPasswordRegister] = useState<string| undefined>()
   const [confirmPassowrd, setConfirmPasswordRegister] = useState<string| undefined>()
 
+  ReactModal.setAppElement("#root")
+
+  const userController = new UserController()
+
+  const register = () =>{
+    userController.register({confirmPassword:confirmPassowrd,email:emailRegister,user:userRegister,password:passwordRegister})
+  }
+  
   const openModalLogin = () => {
     setIsOpenLogin(true);
     document.documentElement.classList.add("overflow-hidden");
@@ -77,7 +86,7 @@ export function Header({
             <span className="text-dark-text-secondary cursor-pointer font-light">
               Esqueceu a senha?
             </span>
-            <button className="border p-2 w-[40%] rounded-lg border-dark-border">
+            <button className="border p-2 w-[40%] rounded-lg border-dark-border" onClick={()=>{register()}}>
               LOGIN
             </button>
             <Contacts size="size-5" className="gap-3" />
@@ -112,23 +121,27 @@ export function Header({
               type="text"
               className="p-2 bg-dark-primary border border-dark-border w-[20vw] rounded-lg "
               placeholder="Usuário"
+              onChange={(e)=>{setUserRegister(e.target.value)}}
             />
             <input
               type="email"
               className="p-2 bg-dark-primary border border-dark-border w-[20vw] rounded-lg "
               placeholder="E-mail"
+              onChange={(e)=>{setEmailRegister(e.target.value)}}
             />
             <input
               type="password"
               className="p-2 bg-dark-primary border border-dark-border w-[20vw] rounded-lg "
               placeholder="Senha"
+              onChange={e=>{setPasswordRegister(e.target.value)}}
             />
             <input
               type="password"
               className="p-2 bg-dark-primary border border-dark-border w-[20vw] rounded-lg "
               placeholder="Confirmar senha"
+              onChange={e=>{setConfirmPasswordRegister(e.target.value)}}
             />
-            <button className="border p-2 w-[40%] rounded-lg border-dark-border">
+            <button className="border p-2 w-[40%] rounded-lg border-dark-border" onClick={()=>{register()}}>
               Sign-up
             </button>
             <Contacts size="size-5" className="gap-3" />
