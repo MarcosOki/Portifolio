@@ -1,0 +1,14 @@
+
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom"
+import { SectionMain } from "./Components/Sections/SectionMain"
+import { SectionBlog } from "./Components/Sections/SectionBlog"
+export const AppRoutes = ()=>{
+  return(
+    <Router>
+      <Routes>
+        <Route path="/" element={<SectionMain/>}/>
+        <Route path="/blog" element={<SectionBlog/>}/>
+      </Routes>
+    </Router>
+  )
+}

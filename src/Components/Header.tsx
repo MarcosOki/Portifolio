@@ -1,23 +1,20 @@
 import { ComponentProps, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { NavBar } from "./NavBar";
-import { FaRegMoon, FaRegSun } from "react-icons/fa";
+
 import ReactModal from "react-modal";
 import { Contacts } from "./Contacts";
 import { UserController } from "../services/UserController";
 
 interface HeaderProps extends ComponentProps<"header"> {
   className?: string;
-  theme: boolean;
-  toggleTheme: () => void;
 }
 
 const pc = "w-full h-[10vh] flex justify-between items-center py-5";
 
 export function Header({
   className,
-  theme,
-  toggleTheme,
+
   ...props
 }: HeaderProps) {
 
@@ -167,13 +164,6 @@ export function Header({
         </div>
       </ReactModal>
       <NavBar className="hidden sm:block" />
-      <button onClick={toggleTheme}>
-        {theme ? (
-          <FaRegMoon size={"30px"} className="text-dark-text-secondary" />
-        ) : (
-          <FaRegSun size={"30px"} className="text-dark-text-secondary" />
-        )}
-      </button>
     </header>
   );
 }

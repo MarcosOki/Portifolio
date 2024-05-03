@@ -3,16 +3,13 @@ import { Container } from "../Container";
 import { Header } from "../Header";
 import { Section } from "../Section";
 
-interface SectionMainProps{
-  toggleThemeFunction: ()=>void,
-  theme:boolean
-}
-export function SectionMain({toggleThemeFunction,theme}:SectionMainProps){
+
+export function SectionMain(){
 
   return(
 
     <Container className="flex flex-col">
-        <Header toggleTheme={toggleThemeFunction} theme={theme} />
+        <Header />
         <Section className="flex flex-col justify-center gap-8 h-[90vh]">
           <div className="w-7/12 ">
             <h1 className="text-dark-text-primary font-bold text-5xl">

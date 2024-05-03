@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { CardAdm } from "../CardAdm";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Header } from "../Header";
 
 interface SectionBlogProps{
   
@@ -84,8 +85,8 @@ export function SectionBlog({}:SectionBlogProps){
   }
 
   return (
-
-    <Container>
+    <Container className="flex flex-col h-[100vh] justify-between">
+      <Header/>
         <Section className="w-6/12 flex flex-col gap-5 py-0">
           <span className="sm:text-4xl text-3xl  text-dark-text-primary sm:font-medium">
             Bem-Vindo ao meu Blog.
@@ -136,7 +137,7 @@ export function SectionBlog({}:SectionBlogProps){
               />
             );
           })}
-          <div className="flex justify-between items-center p-5">
+          <div className="flex justify-between items-center">
             <span className="text-dark-text-secondary">
               Posts: {totalPosts}
             </span>
