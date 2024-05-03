@@ -14,4 +14,9 @@ export class UserController{
     const response = await api.post("/create", userRegister)
     console.log(response.data)
   }
+  async auth(username:string | undefined, password:string | undefined){
+    const data = {username,password}
+    const response = await api.post("/auth",data)
+    console.log(response.data)
+  }
 }

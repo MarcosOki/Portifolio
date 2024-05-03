@@ -24,6 +24,11 @@ export function Header({
   const [user, setUSer] = useState<string| undefined>();
   const [password, setPassword] = useState<string | undefined>();
   const [isOpenLogin, setIsOpenLogin] = useState(false);
+  const login = (e:any) =>{
+    e.preventDefault()
+    userController.auth(user,password)
+  }
+
 
 
   const [userRegister, setUserRegister] = useState<string| undefined>()
@@ -35,7 +40,8 @@ export function Header({
 
   const userController = new UserController()
 
-  const register = () =>{
+  const register = (e:any) =>{
+    e.preventDefault()
     userController.register({confirmPassword:confirmPassowrd,email:emailRegister,user:userRegister,password:passwordRegister})
   }
   
@@ -86,7 +92,7 @@ export function Header({
             <span className="text-dark-text-secondary cursor-pointer font-light">
               Esqueceu a senha?
             </span>
-            <button className="border p-2 w-[40%] rounded-lg border-dark-border" onClick={()=>{register()}}>
+            <button className="border p-2 w-[40%] rounded-lg border-dark-border"  onClick={(e)=>{login(e)}}>
               LOGIN
             </button>
             <Contacts size="size-5" className="gap-3" />
@@ -115,7 +121,7 @@ export function Header({
         className="modal-content"
       >
         <div className="flex justify-center items-center h-full bg-dark-primary p-8 rounded-xl shadow-lg text-dark-text-primary">
-          <div className="flex flex-col gap-6 py-4 items-center">
+          <form className="flex flex-col gap-6 py-4 items-center">
             <span className="text-3xl">Sign-Up</span>
             <input
               type="text"
@@ -141,9 +147,7 @@ export function Header({
               placeholder="Confirmar senha"
               onChange={e=>{setConfirmPasswordRegister(e.target.value)}}
             />
-            <button className="border p-2 w-[40%] rounded-lg border-dark-border" onClick={()=>{register()}}>
-              Sign-up
-            </button>
+            <input type="submit" className="border p-2 w-[40%] rounded-lg border-dark-border" onClick={(e)=>{register(e)}} value={"Sign-Up"}/>
             <Contacts size="size-5" className="gap-3" />
             <div className="flex gap-2">
               <span className="text-dark-text-secondary">
@@ -159,7 +163,7 @@ export function Header({
                 Login
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </ReactModal>
       <NavBar className="hidden sm:block" />
