@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import { Container } from "../Container";
 import { Section } from "../Section";
 import axios from "axios";
@@ -81,10 +81,9 @@ export function SectionBlog({}:SectionBlogProps){
     setPosts(newPosts);
     setTotalPage(response.totalPages);
     setTotalPosts(response.totalPosts);
-    console.table(posts);
   }
 
-  return (
+  return(
     <Container className="flex flex-col h-[100vh] justify-between">
       <Header/>
         <Section className="w-6/12 flex flex-col gap-5 py-0">

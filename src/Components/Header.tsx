@@ -4,7 +4,8 @@ import { NavBar } from "./NavBar";
 
 import ReactModal from "react-modal";
 import { Contacts } from "./Contacts";
-import { UserController } from "../services/UserController";
+import { api } from "../services/api";
+
 
 interface HeaderProps extends ComponentProps<"header"> {
   className?: string;
@@ -18,15 +19,17 @@ export function Header({
   ...props
 }: HeaderProps) {
 
-  const [user, setUSer] = useState<string| undefined>();
+  const [email, setEmail] = useState<string| undefined>();
   const [password, setPassword] = useState<string | undefined>();
   const [isOpenLogin, setIsOpenLogin] = useState(false);
+
   const login = (e:any) =>{
     e.preventDefault()
-    userController.auth(user,password)
+    const data = {
+      email,
+      password
+    }
   }
-
-
 
   const [userRegister, setUserRegister] = useState<string| undefined>()
   const [emailRegister, setEmailRegister] = useState<string| undefined>()
@@ -35,11 +38,11 @@ export function Header({
 
   ReactModal.setAppElement("#root")
 
-  const userController = new UserController()
-
-  const register = (e:any) =>{
+  const register = async (e:any) =>{
     e.preventDefault()
-    userController.register({confirmPassword:confirmPassowrd,email:emailRegister,user:userRegister,password:passwordRegister})
+    const response = await api.post("/create",{
+      username: userRegister , email: emailRegister , password : passwordRegister
+    })
   }
   
   const openModalLogin = () => {
@@ -78,7 +81,7 @@ export function Header({
               type="text"
               className="p-2 bg-dark-primary border border-dark-border w-[20vw] rounded-lg "
               placeholder="Usuário"
-              onChange={(e)=>{setUSer(e.target.value)}}
+              onChange={(e)=>{setEmail(e.target.value)}}
             />
             <input
               type="password"

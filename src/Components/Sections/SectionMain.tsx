@@ -2,12 +2,13 @@ import { Contacts } from "../Contacts";
 import { Container } from "../Container";
 import { Header } from "../Header";
 import { Section } from "../Section";
+import { AuthProvider } from "../context/auth";
 
 
 export function SectionMain(){
 
   return(
-
+    <AuthProvider>
     <Container className="flex flex-col">
         <Header />
         <Section className="flex flex-col justify-center gap-8 h-[90vh]">
@@ -29,5 +30,6 @@ export function SectionMain(){
           <Contacts size="size-7" />
         </Section>
       </Container>
+      </AuthProvider>
   )
 }
