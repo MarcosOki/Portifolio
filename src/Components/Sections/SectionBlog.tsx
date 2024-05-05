@@ -1,5 +1,4 @@
 import {useEffect, useState } from "react";
-import { Container } from "../Container";
 import { Section } from "../Section";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -84,7 +83,7 @@ export function SectionBlog({}:SectionBlogProps){
   }
 
   return(
-    <Container className="flex flex-col h-[100vh] justify-between">
+    <div className="flex flex-col h-[100vh] justify-between bg-dark-primary w-11/12 px-12">
       <Header/>
         <Section className="w-6/12 flex flex-col gap-5 py-0">
           <span className="sm:text-4xl text-3xl  text-dark-text-primary sm:font-medium">
@@ -157,6 +156,6 @@ export function SectionBlog({}:SectionBlogProps){
             </div>
           </div>
         </Section>
-      </Container>
+      </div>
   )
 }

@@ -1,5 +1,4 @@
 import { Contacts } from "../Contacts";
-import { Container } from "../Container";
 import { Header } from "../Header";
 import { Section } from "../Section";
 import { AuthProvider } from "../context/auth";
@@ -9,7 +8,7 @@ export function SectionMain(){
 
   return(
     <AuthProvider>
-    <Container className="flex flex-col">
+    <div className="flex flex-col justify-between bg-dark-primary w-11/12 px-12">
         <Header />
         <Section className="flex flex-col justify-center gap-8 h-[90vh]">
           <div className="w-7/12 ">
@@ -29,7 +28,7 @@ export function SectionMain(){
           </div>
           <Contacts size="size-7" />
         </Section>
-      </Container>
+      </div>
       </AuthProvider>
   )
 }
