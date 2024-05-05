@@ -1,12 +1,13 @@
-import { ComponentProps, useState } from "react";
+import { ComponentProps, useContext, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { NavBar } from "./NavBar";
-
 import ReactModal from "react-modal";
-import { Contacts } from "./Contacts";
 import { api } from "../services/api";
 import { LoginModal } from "./Modals/LoginModal";
 import { RegisterModal } from "./Modals/RegisterModal";
+import { toast } from "react-toastify";
+import { AuthContext } from "./context/auth";
+import { FaUser } from "react-icons/fa";
 
 interface HeaderProps extends ComponentProps<"header"> {
   className?: string;
@@ -23,14 +24,19 @@ export function Header({
   const [password, setPassword] = useState<string | undefined>();
   const [isOpenLogin, setIsOpenLogin] = useState(false);
 
-  const login = (e: any) => {
+  const login = async (e: any) => {
     e.preventDefault();
     const data = {
       email,
       password,
     };
+    await SignIn(data)
+    console.log(signed)
   };
 
+  const {signed} = useContext(AuthContext)
+  const {SignIn} = useContext(AuthContext)
+  
   const [userRegister, setUserRegister] = useState<string | undefined>();
   const [emailRegister, setEmailRegister] = useState<string | undefined>();
   const [passwordRegister, setPasswordRegister] = useState<
@@ -44,11 +50,18 @@ export function Header({
 
   const register = async (e: any) => {
     e.preventDefault();
-    const response = await api.post("/create", {
-      username: userRegister,
-      email: emailRegister,
-      password: passwordRegister,
-    });
+    if (password === confirmPassowrd) {
+      try{
+      await api.post("/create", {
+        username: userRegister,
+        email: emailRegister,
+        password: passwordRegister,
+      })}catch{
+        return toast.error("error ao se cadastrar")
+      }
+    }else{
+      return toast.error("as senhas não batem")
+    }
   };
 
   const openModalLogin = () => {
@@ -72,12 +85,12 @@ export function Header({
 
   return (
     <header className={twMerge(`${pc}`, className)} {...props}>
-      <button
+      {signed == false ? <button
         onClick={openModalLogin}
         className="text-dark-text-primary border-2 border-dark-border rounded-3xl p-2"
       >
         Login
-      </button>
+      </button>: <FaUser className="text-dark-text-primary size-7"/>}
       <ReactModal
         isOpen={isOpenLogin}
         onRequestClose={closeModalLogin}
