@@ -19,7 +19,6 @@ function App() {
     >
       <ToastContainer />
       <SectionMain toggleThemeFunction={toggleTheme} theme={dark}/>
-      <SectionBlog/>
     </Body>
   );
 }
