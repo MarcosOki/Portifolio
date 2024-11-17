@@ -12,7 +12,7 @@ interface SectionBlogProps{
 
 export function SectionBlog({}:SectionBlogProps){
 
-  const url = "https://apiblog-lthw.onrender.com"
+  const url = "http://localhost:3000"
 
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState<
@@ -20,7 +20,7 @@ export function SectionBlog({}:SectionBlogProps){
       title: string;
       text: string;
       author: string;
-      id: string;
+      id_post: string;
       createdAt: string;
     }[]
   >([]);
@@ -74,9 +74,8 @@ export function SectionBlog({}:SectionBlogProps){
   }, [page, att]);
 
   async function getPost() {
-    const response = (await axios.get(`${url}/page/${page}`))
-      .data;
-    const newPosts = response.posts.reverse();
+    const response = (await axios.get(`${url}/getposts/${page}`)).data;
+    const newPosts = response.data.reverse();
     setPosts(newPosts);
     setTotalPage(response.totalPages);
     setTotalPosts(response.totalPosts);
@@ -130,7 +129,7 @@ export function SectionBlog({}:SectionBlogProps){
                 text={post.text}
                 title={post.title}
                 createdAt={post.createdAt}
-                idPost={Number(post.id)}
+                idPost={Number(post.id_post)}
                 setAtt={setAtt}
                 att={att}
               />
