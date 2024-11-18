@@ -3,6 +3,7 @@ import { ComponentProps } from "react"
 import { FaRegTrashCan } from "react-icons/fa6"
 import { twMerge } from "tailwind-merge"
 import { toast } from "react-toastify"
+import { Globals } from "../../globals"
 interface CardAdmProps extends ComponentProps<'div'> {
    className?:string,
    title:string,
@@ -14,7 +15,7 @@ interface CardAdmProps extends ComponentProps<'div'> {
 }
 
 export function CardAdm({className,title,text,createdAt,idPost,att,setAtt, ...props}: CardAdmProps) {
-  const url = "https://apiblog-lthw.onrender.com"
+  const url = Globals.url
 
   const deletePost = async (idPost:number)=>{
     await axios.delete(`${url}/deletepost`,{data:{id:idPost}}).then(()=>{toast.success("Post deletado com sucesso")}).catch(()=>{toast.error("Erro ao deletar post")})

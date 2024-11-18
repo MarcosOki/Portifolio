@@ -5,14 +5,14 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { CardAdm } from "../CardAdm";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-
+import { Globals } from "../../../globals";
 interface SectionBlogProps{
   
 }
 
 export function SectionBlog({}:SectionBlogProps){
 
-  const url = "http://localhost:3000"
+  const url = Globals.url
 
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState<
