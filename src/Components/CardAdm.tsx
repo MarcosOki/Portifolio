@@ -18,7 +18,7 @@ export function CardAdm({className,title,text,createdAt,idPost,att,setAtt, ...pr
   const url = Globals.url
 
   const deletePost = async (idPost:number)=>{
-    await axios.delete(`${url}/deletepost`,{data:{id:idPost}}).then(()=>{toast.success("Post deletado com sucesso")}).catch(()=>{toast.error("Erro ao deletar post")})
+    await axios.delete(`${url}/deletepost/${idPost}`).then(()=>{toast.success("Post deletado com sucesso")}).catch(()=>{toast.error("Erro ao deletar post")})
     setAtt(att ? false : true)
   }
 
